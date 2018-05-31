@@ -4,7 +4,7 @@ $('#auth_submit').on('click',function(e){
   console.log('doc load tested');
   $.ajax({
     type: 'POST',
-    url: 'http://localhost:3001/signup',
+    url: 'https://dp-appointment-api.herokuapp.com/signup',
     dataType: 'json',
     contentType: 'application/json',
     data: JSON.stringify({ name: $('#user_name').val(),email: $('#user_email').val(), password: $('#user_password').val()}),

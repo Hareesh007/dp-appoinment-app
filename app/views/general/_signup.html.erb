@@ -19,12 +19,12 @@ $(document).on('ready',function(){
      console.log('doc load tested');
      $.ajax({
        type: 'POST',
-       url: 'http://localhost:3001/signup',
+       url: 'https://dp-appointment-api.herokuapp.com/signup',
        dataType: 'json',
        contentType: 'application/json',
        data: JSON.stringify({ name: $('#user_name').val(),email: $('#user_email').val(), password: $('#user_password').val()}),
        success: function(res) {
-        window.location.href = 'http://localhost:3000/'
+        window.location.href = 'https://dp-appointment-app.herokuapp.com/'
         toastr.success('Login Successfully')
      },
        error: function(res){

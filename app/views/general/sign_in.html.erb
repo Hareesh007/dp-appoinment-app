@@ -17,21 +17,21 @@ $(document).on('ready',function(){
       $(this).addClass('active');
    });
    if (localStorage.getItem('token') != null){
-      window.location.href = 'http://localhost:3000/';
+      window.location.href = 'https://dp-appointment-app.herokuapp.com/';
    }
    $('#auth_btn').on('click',function(e){
      console.log('doc load tested');
      e.preventDefault();
      $.ajax({
        type: 'POST',
-       url: 'http://localhost:3001/signin',
+       url: 'https://dp-appointment-api.herokuapp.com/signin',
        dataType: 'json',
        contentType: 'application/json',
        data: JSON.stringify({ email: $('#user_email').val(), password: $('#user_password').val()}),
        success: function(res) {
          localStorage.setItem('token', res.access_token);
 
-         window.location.href = 'http://localhost:3000/'
+         window.location.href = 'https://dp-appointment-app.herokuapp.com/'
          toastr.success('Login Successfully');
          console.log('success');
      },
@@ -46,12 +46,12 @@ $(document).on('ready',function(){
     console.log('doc load tested');
     $.ajax({
       type: 'POST',
-      url: 'http://localhost:3001/signup',
+      url: 'https://dp-appointment-api.herokuapp.com/signup',
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify({ name: $('#user_name').val(),email: $('#user_email').val(), password: $('#user_password').val()}),
       success: function(res) {
-       window.location.href = 'http://localhost:3000/'
+       window.location.href = 'https://dp-appointment-app.herokuapp.com/'
        toastr.success('Login Successfully')
     },
       error: function(res){

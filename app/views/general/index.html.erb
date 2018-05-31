@@ -3,7 +3,7 @@
     <div class="col-sm-6 grey_bg">
       <div class="box w-50 pt-5">
         <h6 class="w-50 line text-center mx-auto mb-4 pb-2 text-uppercase"><b>Patient</b></h6>
-        <!-- <%#= form_with url: 'http://localhost:3001/create_patient' do |f| %>
+        <!-- <%#= form_with url: 'https://dp-appointment-api.herokuapp.com/create_patient' do |f| %>
           <div class="form-group">
           <%#= f.label :patient_name, "Search for:" %>
           <%#= f.text_field :name, id: :patient_name %>
@@ -93,7 +93,7 @@ $(document).on('ready',function(){
   // get all appointmetns aand dispaly in table function
   function get_appointment(){
     console.log('function call');
-    // $.getJSON('http://localhost:3001/appointments.json', (res1) => {
+    // $.getJSON('https://dp-appointment-api.herokuapp.com/appointments.json', (res1) => {
     //  debugger;
     //   $('#table_tbody').html(appointment_data(res1));
     //
@@ -101,7 +101,7 @@ $(document).on('ready',function(){
     // });
 
     $.ajax({
-     url: "http://localhost:3001/appointments.json",
+     url: "https://dp-appointment-api.herokuapp.com/appointments.json",
      type: 'GET',
      // Fetch the stored token from localStorage and set in the header
      // headers: {"Authorization": localStorage.getItem('res.access_toke')},
@@ -114,7 +114,7 @@ $(document).on('ready',function(){
      error:function(response){
        // debugger;
        if(response.status == 401 || response.responseJSON.message == "Not enough or too many segments" || response.responseJSON.message == "Nil JSON web token"){
-         window.location.href = 'http://localhost:3000/sign_in'
+         window.location.href = 'https://dp-appointment-app.herokuapp.com/sign_in'
           $('#flash').html('Please Login with Email and password');
        }
      }
@@ -145,7 +145,7 @@ $(document).on('ready',function(){
  });
   //get all doctor name
   function get_doctor(){
-    // $.get('http://localhost:3001/get_doctor.json',{ headers: { "Authorization": 'Bearer ' + localStorage.getItem('token') }} ,function(response) {
+    // $.get('https://dp-appointment-api.herokuapp.com/get_doctor.json',{ headers: { "Authorization": 'Bearer ' + localStorage.getItem('token') }} ,function(response) {
     //    // debugger;
     //    var output="<select class='form-control' name='doctor_id'><option disabled selected value > Doctor Name</option>";
     //    for (var i in response)
@@ -157,7 +157,7 @@ $(document).on('ready',function(){
     // });
     $.ajax({
       type: 'GET',
-      url: "http://localhost:3001/get_doctor.json",
+      url: "https://dp-appointment-api.herokuapp.com/get_doctor.json",
       dataType: 'json',
       headers: { "Authorization": 'Bearer ' + localStorage.getItem('token') },
       contentType: 'application/json',
@@ -180,7 +180,7 @@ $(document).on('ready',function(){
 
  // get all patiemt name
   function get_patient(){
-   // $.get('http://localhost:3001/get_patient.json', function(response) {
+   // $.get('https://dp-appointment-api.herokuapp.com/get_patient.json', function(response) {
    //  // debugger;
    //   var output="<select class='form-control' name='patient_id'><option disabled selected value > Patient Name</option>";
    //   for (var i in response)
@@ -192,7 +192,7 @@ $(document).on('ready',function(){
    // });
    $.ajax({
      type: 'GET',
-     url: "http://localhost:3001/get_patient.json",
+     url: "https://dp-appointment-api.herokuapp.com/get_patient.json",
      dataType: 'json',
      headers: { "Authorization": 'Bearer ' + localStorage.getItem('token') },
      contentType: 'application/json',
@@ -216,7 +216,7 @@ $(document).on('ready',function(){
      console.log($('#doc_name').val());
      $.ajax({
        type: 'POST',
-       url: 'http://localhost:3001/create_doctor',
+       url: 'https://dp-appointment-api.herokuapp.com/create_doctor',
        dataType: 'json',
        headers: { "Authorization": 'Bearer ' + localStorage.getItem('token') },
        contentType: 'application/json',
@@ -253,7 +253,7 @@ $(document).on('ready',function(){
      console.log($('#doc_name').val());
      $.ajax({
        type: 'POST',
-       url: 'http://localhost:3001/create_patient',
+       url: 'https://dp-appointment-api.herokuapp.com/create_patient',
        dataType: 'json',
        contentType: 'application/json',
        data: JSON.stringify({name:  $("#patient_name").val(), phone: $("#patient_phone").val()}),
@@ -290,7 +290,7 @@ $(document).on('ready',function(){
      console.log($('#doc_name').val());
      $.ajax({
        type: 'POST',
-       url: 'http://localhost:3001/create_appointment',
+       url: 'https://dp-appointment-api.herokuapp.com/create_appointment',
        dataType: 'json',
        contentType: 'application/json',
        data: JSON.stringify({doctor_id:  $("#sel_doctor select option:selected").val(),patient_id: $("#sel_patient select option:selected").val(),diseases: $('#appointment_dise').val()}),
@@ -347,7 +347,7 @@ function pagiantion_data(res1){
       pagiantion+="<li class='page-item page current active'><a href='javascript:void(0);' class='page-link'><span class=''>"+ i +"</span></a></li>";
     }
     else{
-     pagiantion+="<li class='page page-item'><a  class='page-link pagination_link' href='javascript:void(0);' onclick='setSelectedTestPlan(this,"  + i + ');' + "'data-url='http://localhost:3001/appointments.json/?page=" + i + "&&'>" +  i +"</li>";
+     pagiantion+="<li class='page page-item'><a  class='page-link pagination_link' href='javascript:void(0);' onclick='setSelectedTestPlan(this,"  + i + ');' + "'data-url='https://dp-appointment-api.herokuapp.com/appointments.json/?page=" + i + "&&'>" +  i +"</li>";
     }
   }
   pagiantion += "</ul>";
