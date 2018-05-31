@@ -1,0 +1,21 @@
+$('#auth_form').html("<%= j render(:partial => 'login') %>");
+   $('#auth_btn').on('click',function(e){
+     console.log('doc load tested');
+     e.preventDefault();
+     $.ajax({
+       type: 'POST',
+       url: 'http://localhost:3001/signin',
+       dataType: 'json',
+       contentType: 'application/json',
+       data: JSON.stringify({ email: $('#user_email').val(), password: $('#user_password').val()}),
+       success: function(res) {
+        localStorage.setItem('token', res.access_token)
+        window.location.href = 'http://localhost:3000/'
+        toastr.success('Login Successfully')
+     },
+       error: function(res){
+         debugger;
+          $('#error_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
+       }
+      });
+  });

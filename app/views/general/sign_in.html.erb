@@ -1,0 +1,64 @@
+<div class="login_box">
+  <div class="w-25 m-auto">
+      <h5 class="text-center">
+        <%= link_to "Login", sign_in_path, :remote => true, class:'nav_link active' %>
+        <span>&nbsp; or&nbsp;</span>
+      <%= link_to "SignUp", sign_up_path, :remote => true, class:'nav_link' %>
+      </h5>
+      <div id="auth_form">
+        <%= render 'login'%>
+      </div>
+  </div>
+</div>
+<script>
+$(document).on('ready',function(){
+   $('.login_box .nav_link').on('click',function(){
+     $('.nav_link').removeClass('active');
+      $(this).addClass('active');
+   });
+   if (localStorage.getItem('token') != null){
+      window.location.href = 'http://localhost:3000/';
+   }
+   $('#auth_btn').on('click',function(e){
+     console.log('doc load tested');
+     e.preventDefault();
+     $.ajax({
+       type: 'POST',
+       url: 'http://localhost:3001/signin',
+       dataType: 'json',
+       contentType: 'application/json',
+       data: JSON.stringify({ email: $('#user_email').val(), password: $('#user_password').val()}),
+       success: function(res) {
+         localStorage.setItem('token', res.access_token);
+
+         window.location.href = 'http://localhost:3000/'
+         toastr.success('Login Successfully');
+         console.log('success');
+     },
+       error: function(res){
+        console.log('error');
+        $('#error_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
+       }
+      });
+  });
+  $('#auth_submit').on('click',function(e){
+    e.preventDefault();
+    console.log('doc load tested');
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:3001/signup',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({ name: $('#user_name').val(),email: $('#user_email').val(), password: $('#user_password').val()}),
+      success: function(res) {
+       window.location.href = 'http://localhost:3000/'
+       toastr.success('Login Successfully')
+    },
+      error: function(res){
+        debugger;
+         $('#eror_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
+      }
+     });
+ });
+});
+</script>

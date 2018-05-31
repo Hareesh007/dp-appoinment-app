@@ -1,0 +1,36 @@
+<form id="login_form">
+  <div class="form-group">
+    <input type="text"  id="user_email" placeholder="Email"  class="form-control"/>
+  </div>
+  <div class="form-group">
+    <input type="text"  id="user_password" placeholder="Password"  class="form-control"/>
+      <span id="error_sec" class="text-danger"></span>
+  </div>
+
+  <div class="action_btn">
+    <button class="btn btn-danger" id="auth_btn">Submit</button>
+  </div>
+</form>
+<script>
+// $(document).on('ready',function(){
+//    $('#auth_btn').on('click',function(e){
+//      console.log('doc load tested');
+//      e.preventDefault();
+//      $.ajax({
+//        type: 'POST',
+//        url: 'http://localhost:3001/signin',
+//        dataType: 'json',
+//        contentType: 'application/json',
+//        data: JSON.stringify({ email: $('#user_email').val(), password: $('#user_password').val()}),
+//        success: function(res) {
+//         window.location.href = 'http://localhost:3000/'
+//         toastr.success('Login Successfully')
+//      },
+//        error: function(res){
+//          debugger;
+//           $('#eror_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
+//        }
+//       });
+//   });
+// });
+</script>
