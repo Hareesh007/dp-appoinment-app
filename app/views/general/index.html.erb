@@ -114,7 +114,7 @@ $(document).on('ready',function(){
    var url = $('this').attr('data-url');
    console.log(url);
    $.get(url, function(response) {
-    debugger;
+    // debugger;.
   });
  });
   //get all doctor name
@@ -175,6 +175,7 @@ $(document).on('ready',function(){
        contentType: 'application/json',
        data: JSON.stringify({ name: $('#doc_name').val(), phone: $('#doc_phone').val(), specialization  :$('#doc_spec').val()}),
        success: function(res,g) {
+         $('.help-block').html('');
            $('#sel_doctor select')
             .append($("<option></option>")
                        .attr("value",res['doc_list'].id)
@@ -211,7 +212,8 @@ $(document).on('ready',function(){
        contentType: 'application/json',
        data: JSON.stringify({name:  $("#patient_name").val(), phone: $("#patient_phone").val()}),
        success: function(res) {
-         debugger;
+         // debugger;
+         $('.help-block').html('');
            $('#sel_patient select')
             .append($("<option></option>")
                        .attr("value",res['patient_list'].id)
@@ -251,7 +253,8 @@ $(document).on('ready',function(){
        data: JSON.stringify({doctor_id:  $("#sel_doctor select option:selected").val(),patient_id: $("#sel_patient select option:selected").val(),diseases: $('#appointment_dise').val()}),
        success: function(res) {
           console.log('ds');
-          debugger;
+          // debugger;
+          $('.help-block').html('');
           toastr.info(res['message']);
            get_appointment();
 
@@ -286,7 +289,8 @@ function setSelectedTestPlan(e,page_no){
     contentType: 'application/json',
     data: {page: page_no},
     success: function(response) {
-      debugger;
+      // debugger;
+      $('.help-block').html('');
       $('#table_tbody').html(appointment_data(response));
       console.log('---------------');
       $('#rep_table').next('').html(pagiantion_data(response));
