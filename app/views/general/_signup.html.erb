@@ -6,32 +6,9 @@
     <input type="text"  id="user_email" placeholder="Email" name="user_email" class="form-control"/>
   </div>
   <div class="form-group">
-    <input type="text"  id="user_password" placeholder="Password" name="user_password"  class="form-control"/>
+    <input type="password"  id="user_password" placeholder="Password" name="user_password"  class="form-control"/>
   </div>
   <div class="action_btn">
     <button class="btn btn-danger" id="auth_submit">Submit</button>
   </div>
 </form>
-<script>
-$(document).on('ready',function(){
-   $('#auth_submit').on('click',function(e){
-     e.preventDefault();
-     console.log('doc load tested');
-     $.ajax({
-       type: 'POST',
-       url: 'https://dp-appointment-api.herokuapp.com/signup',
-       dataType: 'json',
-       contentType: 'application/json',
-       data: JSON.stringify({ name: $('#user_name').val(),email: $('#user_email').val(), password: $('#user_password').val()}),
-       success: function(res) {
-        window.location.href = 'https://dp-appointment-app.herokuapp.com/'
-        toastr.success('Login Successfully')
-     },
-       error: function(res){
-         debugger;
-          $('#eror_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
-       }
-      });
-  });
-});
-</script>

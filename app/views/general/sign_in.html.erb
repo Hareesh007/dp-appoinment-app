@@ -17,7 +17,7 @@ $(document).on('ready',function(){
       $(this).addClass('active');
    });
    if (localStorage.getItem('token') != null){
-      window.location.href = 'https://dp-appointment-app.herokuapp.com/';
+      window.location.href = 'https://dp-appointment-app.herokuapp.com/sign_in';
    }
    $('#auth_btn').on('click',function(e){
      console.log('doc load tested');
@@ -30,13 +30,14 @@ $(document).on('ready',function(){
        data: JSON.stringify({ email: $('#user_email').val(), password: $('#user_password').val()}),
        success: function(res) {
          localStorage.setItem('token', res.access_token);
-
-         window.location.href = 'https://dp-appointment-app.herokuapp.com/'
+        // debugger;
+        $('#error_sec').html('');
+         window.location.href = 'https://dp-appointment-app.herokuapp.com'
          toastr.success('Login Successfully');
          console.log('success');
      },
        error: function(res){
-        console.log('error');
+        // console.log('error111111111');
         $('#error_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
        }
       });
@@ -55,7 +56,7 @@ $(document).on('ready',function(){
        toastr.success('Login Successfully')
     },
       error: function(res){
-        debugger;
+        // debugger;
          $('#eror_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
       }
      });

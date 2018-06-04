@@ -12,10 +12,11 @@ $('#auth_submit').on('click',function(e){
       $('#user_name').val('');
       $('#user_email').val('');
       $('#user_password').val('');
+      $('#error_sec').html('');
      toastr.success('New User Created Successfully');
   },
     error: function(res){
-      debugger;
+      // debugger;
        form = $('#signup_form');
        form.find('.form-group').removeClass('has-error');
        form.find('span.help-block').remove();
