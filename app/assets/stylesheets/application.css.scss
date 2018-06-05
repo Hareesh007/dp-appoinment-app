@@ -23,7 +23,7 @@
   border-bottom: 1px solid #ddd;
 }
 .btn-orange{
-  background-color: orange;
+  background-color: #E76D28;
 }
 .row{
   margin: 0px!important;
@@ -33,4 +33,22 @@
 }
 .login_box a.active{
   color: #000;
+}
+.table{
+  border-collapse: separate;
+  border-spacing: 1px 9px;
+  text-align: center;
+}
+.table thead th{
+  background-color: #123E6F;
+  border:none;
+  padding: 0.65rem;
+  color: #ffffff;
+}
+.table td{
+ padding: 0.65rem;
+ background-color: #ffffff;
+}
+h6{
+  color: #123E6F;
 }

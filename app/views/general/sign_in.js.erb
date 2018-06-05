@@ -16,7 +16,7 @@ $('#auth_form').html("<%= j render(:partial => 'login') %>");
      },
        error: function(res){
          // debugger;
-          $('#error_sec').html('<span class="help-block text-danger">' + res.responseJSON.error.user_authentication + '</span>');
+          $('#error_sec').html('<span class="help-block btn-orange">' + res.responseJSON.error.user_authentication + '</span>');
        }
       });
   });
